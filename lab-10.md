@@ -1,7 +1,7 @@
 Lab 10 - Grading the professor, Pt. 2
 ================
-Insert your name here
-Insert date here
+Alex Connolly
+April 22
 
 ### Load packages and data
 
