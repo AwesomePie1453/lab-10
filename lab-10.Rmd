@@ -15,13 +15,122 @@ library(openintro)
 
 ### Exercise 1
 
-Remove this text, and add your answer for Exercise 1 here.
-Add code chunks as needed.
-Don't forget to label your code chunk.
-Do not use spaces in code chunk labels.
+```{r mbty}
+m_bty <- lm(score ~ bty_avg, data=evals)
+summary(m_bty)
+```
+
+y = .06664x + 3.88034
+R2 is .03502, R2 adjusted is .03293
 
 ### Exercise 2
 
-...
+```{r gen}
+m_bty_gen <- lm(score ~ bty_avg + gender, data=evals)
 
-Add exercise headings as needed.
+summary(m_bty_gen)
+```
+Y= .07416x + .17239z + 3.74734
+R2 is .05912, adjusted R2 is .05503.
+
+
+### Exercise 3
+
+Intercept = 3.7434, that would be the score if the beauty was 0 and the gender was female
+.07416 is how much the score would go up for every 1 increase of beauty
+.17239 is the amount that male professors score higher than females on average
+
+### Exercise 4
+
+The % of variability in score is 5.5503%
+
+### Exercise 5
+
+y= .07416x + (.17239+3.74734)
+
+### Exercise 6
+
+Males
+
+### Exercise 7
+
+Males will tend to have the higher scores
+
+### Exercise 8
+
+The adjusted R2 is better with m_bty_gen, implying that gender is important in explaining the variability in evaluation scores when we already have information on beauty score of the professor. 
+
+### Exercise 9
+
+Yes, it raised a little, about .01
+
+### Exercise 10
+
+```{r rank}
+m_bty_rank <- lm(score ~ bty_avg + rank, data=evals)
+
+summary(m_bty_rank)
+```
+Tenured, Y = 3.98155 + .06783X -.12623Z
+Tenure Track, Y = 3.98155 + .06783X = .16070Z
+Teaching Track, Y = 3.98155 + .06783X + 0Z
+
+3.98155, if beauty score is 0 and on tenure track that will be their score
+.06783, for every one point of beauty, the score will go up that much
+-.16070, How much the score will decrease if on tenure track
+-.12623, how much the score will decrease if tenured.
+
+### Exercise 11
+
+Probably? Cls did eval. Who cares how many people did the eval? That's just sample size I'd assume, which is useful, but not in predicting scores. Unless some teachers are better at teaching to smaller classes? But idk. 
+
+### Exercise 12
+
+
+```{r did}
+m_did_eval <- lm(score ~ cls_did_eval, data=evals)
+
+summary(m_did_eval)
+```
+
+Very small R squared!!
+
+### Exercise 13
+
+Similar to above, i would think cls_did_eval would be useless in this case. The other two variables should give us all the necessary info for whetehr people did the eval or not. Nothing else is gained here. 
+
+### Exercise 14
+
+```{r everything}
+m_everything <- lm(score ~ rank + gender + age + cls_perc_eval + cls_students + cls_level + cls_profs + ethnicity + cls_credits + language+ bty_avg, data=evals)
+
+summary(m_everything)
+
+```
+
+
+### Exercise 15
+
+The most significant were cls credit, beatuy, cls perc eval, and gender
+
+```{r}
+m_best <- lm(score ~  gender + cls_perc_eval + cls_credits + bty_avg, data=evals)
+summary(m_best)
+```
+Y= 3.375919 + .176206g + .004p + .457260c + .072030b
+
+### Exercise 16
+
+.176206, this is how much score goes up when the teacher is male
+.072030, this is how much score goes up when 1 beauty point is increased
+
+### Exercise 17
+
+A beautiful man who gives out credit for taking the evals will be rated the highst.
+
+### Exercise 18
+
+Not necessarily. This could be the case, but there could be so many confounds. I, for one, would try to replicated the study and see if it could apply. 
+
+
+
